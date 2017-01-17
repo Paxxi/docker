@@ -131,11 +131,6 @@ func TestJSONFileLoggerWithOpts(t *testing.T) {
 {"log":"line8\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 {"log":"line9\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 {"log":"line10\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
-{"log":"line11\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
-{"log":"line12\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
-{"log":"line13\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
-{"log":"line14\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
-{"log":"line15\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 `
 	expected := `{"log":"line11\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 {"log":"line12\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
