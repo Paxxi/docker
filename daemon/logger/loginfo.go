@@ -58,6 +58,17 @@ func (info *Info) ExtraAttributes(keyMod func(string) string) map[string]string 
 		}
 	}
 
+	if len(info.ContainerID) > 12 {
+		extra["id"] = info.ID()
+	}
+
+	if len(info.ContainerImageID) > 12 {
+		extra["imageId"] = info.ImageID()
+	}
+
+	extra["name"] = info.Name()
+	extra["imageName"] = info.ImageName()
+
 	return extra
 }
 
