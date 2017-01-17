@@ -120,27 +120,32 @@ func TestJSONFileLoggerWithOpts(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedPenultimate := `{"log":"line0\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line1\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line2\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line3\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line4\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line5\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line6\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line7\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line8\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line9\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line10\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line11\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line12\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line13\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line14\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line15\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
+	expectedPenultimate := `{"log":"line0\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line1\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line2\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line3\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line4\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line5\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line6\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line7\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line8\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line9\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line10\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line11\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line12\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line13\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line14\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line15\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 `
-	expected := `{"log":"line16\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line17\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line18\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line19\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
+	expected := `{"log":"line11\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line12\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line13\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line14\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line15\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line16\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line17\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line18\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line19\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 `
 
 	if string(res) != expected {
@@ -194,6 +199,7 @@ func TestJSONFileLoggerWithLabelsEnv(t *testing.T) {
 		"environ": "production",
 		"debug":   "false",
 		"ssl":     "true",
+		"id":      "a7317399f3f8",
 	}
 	if !reflect.DeepEqual(extra, expected) {
 		t.Fatalf("Wrong log attrs: %q, expected %q", extra, expected)
