@@ -23,6 +23,30 @@ type Info struct {
 	DaemonName          string
 }
 
+// BasicAttributes returns basic container attributes
+// These include container ID and name, image id and name
+// Values may be missing in test mode when not all fields
+// are populated
+func (info *Info) BasicAttributes() map[string]string {
+	basic := make(map[string]string)
+	if len(info.ContainerID) > 12 {
+		basic["id"] = info.ID()
+	}
+
+	if len(info.ContainerImageID) > 12 {
+		basic["imageId"] = info.ImageID()
+	}
+
+	if len(info.ContainerName) > 0 {
+		basic["name"] = info.Name()
+	}
+
+	if len(info.ContainerImageName) > 0 {
+		basic["imageName"] = info.ImageName()
+	}
+	return basic
+}
+
 // ExtraAttributes returns the user-defined extra attributes (labels,
 // environment variables) in key-value format. This can be used by log drivers
 // that support metadata to add more context to a log.
@@ -57,17 +81,6 @@ func (info *Info) ExtraAttributes(keyMod func(string) string) map[string]string 
 			}
 		}
 	}
-
-	if len(info.ContainerID) > 12 {
-		extra["id"] = info.ID()
-	}
-
-	if len(info.ContainerImageID) > 12 {
-		extra["imageId"] = info.ImageID()
-	}
-
-	extra["name"] = info.Name()
-	extra["imageName"] = info.ImageName()
 
 	return extra
 }

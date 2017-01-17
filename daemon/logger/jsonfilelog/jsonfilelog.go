@@ -66,13 +66,16 @@ func New(info logger.Info) (logger.Logger, error) {
 		return nil, err
 	}
 
-	var extra []byte
-	if attrs := info.ExtraAttributes(nil); len(attrs) > 0 {
-		var err error
-		extra, err = json.Marshal(attrs)
-		if err != nil {
-			return nil, err
+	attrs := info.BasicAttributes()
+	if extraAttrs := info.ExtraAttributes(nil); len(extraAttrs) > 0 {
+		for k,v := range extraAttrs {
+			attrs[k] = v
 		}
+
+	}
+	extra, err := json.Marshal(attrs)
+	if err != nil {
+		return nil, err
 	}
 
 	return &JSONFileLogger{

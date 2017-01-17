@@ -44,9 +44,9 @@ func TestJSONFileLogger(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	expected := `{"log":"line1\n","stream":"src1","time":"0001-01-01T00:00:00Z"}
-{"log":"line2\n","stream":"src2","time":"0001-01-01T00:00:00Z"}
-{"log":"line3\n","stream":"src3","time":"0001-01-01T00:00:00Z"}
+	expected := `{"log":"line1\n","stream":"src1","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line2\n","stream":"src2","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
+{"log":"line3\n","stream":"src3","attrs":{"id":"a7317399f3f8"},"time":"0001-01-01T00:00:00Z"}
 `
 
 	if string(res) != expected {
